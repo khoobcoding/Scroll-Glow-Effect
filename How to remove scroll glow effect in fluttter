@@ -1,0 +1,32 @@
+//  Method 1
+
+
+     NotificationListener<OverscrollIndicatorNotification>(
+      onNotification: ((OverscrollIndicatorNotification? notification) {
+        notification!.disallowIndicator();
+        return true;
+       }),
+       child: : custombehaviour(),         // Here is your List
+         child: ListView.builder(itemBuilder: ((context, index) {
+          return ListTile(title: Text(index.toString()),);
+             })),                                
+       
+       
+       
+       
+//   Method 2
+
+
+ScrollConfiguration(
+        behavior: custombehaviour(),
+         child: ListView.builder(itemBuilder: ((context, index) {   // Here is your List
+          return ListTile(title: Text(index.toString()),);
+             })),
+       ),
+       
+class custombehaviour extends ScrollBehavior{
+  @override
+  Widget buildOverscrollIndicator(BuildContext context, Widget child, ScrollableDetails details) {
+    return child;
+  }
+}
